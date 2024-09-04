@@ -1,0 +1,40 @@
+<div class="w-3/4 mx-auto rounded shadow bg-gray-100 p-3 mb-3 my-16">
+<h1 class="h2 uppercase font-bold text-2xl text-center py-3">all orders</h1>
+<div class="border p-5 mb-5 ">
+
+
+@for(x of allOrdersList ; track $index)
+{
+  @for(cartOrder of x.cartItems;track $index)
+  {
+    <h3 class="text-main font-bold text-xl my-10 border-t-4">orders:</h3>
+    <div class="row  border-b  items-center justify-between py-4">
+       <div class="md:w-3/12">
+         <img class="w-full" [src]="cartOrder.product.imageCover" alt="image">
+       </div>
+       <div class="md:w-8/12">
+         <div class="flex justify-between items-center">
+           <div>
+             <h3 class="h6 text-main">title:{{cartOrder.product.title}}</h3>
+             <p class="text-main uppercase mb-0">count:{{cartOrder.count}}</p>
+             <p class="text-main uppercase mb-0">price:{{cartOrder.price}}</p>
+           </div>
+   
+         </div>
+       </div>
+     </div>
+     <div class=" p-10 text-main">
+      <p>is Delivered:{{x.isDelivered}}</p>
+      <p>is Paid:{{x.isPaid}}</p>
+      <p>Payment Method Type:{{x.paymentMethodType}}</p>
+      <P>Total Order Price:{{x.totalOrderPrice}}</P>
+    </div>
+  }
+ 
+
+  
+ 
+} 
+
+</div>
+</div>

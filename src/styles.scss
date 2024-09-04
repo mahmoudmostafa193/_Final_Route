@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@200;300&display=swap");
+
+:root {
+  --main-color: #0aad0a;
+  --light-color: #f0f3f2;
+  --shadow: rgba(145, 158, 171, 0.2) 0px 2px 4px -1px,
+    rgba(145, 158, 171, 0.14) 0px 4px 5px 0px,
+    rgba(145, 158, 171, 0.12) 0px 1px 10px 0px;
+  --font-family: "Encode Sans Expanded", sans-serif;
+  --rating-color: #ffc908;
+}
+
+body {
+  font-family: var(--font-family) !important;
+  /* direction: rtl; */
+}
+
+.nav-link {
+  transition: unset !important;
+}
+.active-link {
+  background-color: var(--main-color) !important;
+  color: var(--light-color) !important;
+  border-radius: 5px;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.rating-color {
+  color: var(--rating-color);
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.product {
+  border-radius: 5px;
+  border: solid 1px var(--main-color);
+  transition: box-shadow 0.5s;
+  overflow: hidden;
+}
+.product:hover {
+  box-shadow: 0 0 10px #11bd1168;
+}
+
+.product .btn-main {
+  transform: translateY(150%);
+  transition: transform 0.7s;
+}
+.btn-main{
+  @apply bg-main text-main p-2 rounded
+ }
+.product {
+  transition: all 0.5s;
+  position: relative;
+  &:hover{
+    .heart{
+      right: 5px;
+    }
+  }
+  .heart{
+    font-size: 35px;
+    position: absolute;
+    top:5px;
+    right: -50px;
+    transition:  right 0.7s;
+    cursor: pointer;
+    
+  }
+}
+.product button {
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all 0.5;
+}
+.product:hover button {
+  opacity: 1;
+  transform: translateY(0%);
+}
+.product:hover .btn-main {
+  transform: translateY(0%);
+}
+
+.font-sm {
+  font-size: 12px;
+}
+.text-main {
+  color: var(--main-color);
+}
+.bg-main {
+  background-color: var(--main-color) !important;
+}
+.bg-main-light {
+  background-color: var(--light-color) !important;
+}
+.btn-main {
+  background-color: var(--main-color);
+  padding: 7px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+.btn-main:disabled {
+  cursor: not-allowed;
+  background-color: #ccc;
+}
+.btn-main:disabled:hover {
+  background-color: #ccc;
+}
+.btn-main:hover {
+  background-color: #11bd11;
+}
+
+.black-bg {
+  background-color: black;
+}
+.form-control:focus {
+  box-shadow: 0 0 0 0;
+  border-color: #e1e4e3;
+}
+.line {
+  width: 100%;
+  margin: auto;
+  height: 1px;
+  background-color: #ccc;
+}
+.image {
+  width: 5%;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 60px;
+  height: 25px;
+  border: 2px solid;
+  box-sizing: border-box;
+  border-radius: 50%;
+  display: grid;
+  animation: l2 2s infinite linear;
+}
+.loader:before,
+.loader:after {
+  content: "";
+  grid-area: 1/1;
+  border: inherit;
+  border-radius: 50%;
+  animation: inherit;
+  animation-duration: 3s;
+}
+.loader:after {
+  --s:-1;
+}
+@keyframes l2 {
+   100% {transform:rotate(calc(var(--s,1)*1turn))}
+}
+

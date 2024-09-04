@@ -1,0 +1,135 @@
+<div class="w-3/4 mx-auto">
+  <h1 class="h-3 text-2xl mb-10 mt-8">Register Now :</h1>
+  <form class="mb-9" [formGroup]="registerForm" (ngSubmit)="submitRegister()">
+    @if(errMsg)
+    {
+<div class="bg-red-300 m-0 p-0 rounded">
+  <p class="m-0 p-1 text-white">{{errMsg}}</p>
+
+</div>
+    }
+<div class="my-4">
+  <label class="">name:</label>
+  <input formControlName="name" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+@if(registerForm.get('name')?.errors && registerForm.get('name')?.touched)
+{
+  <div class="bg-red-400 p-0 m-2 rounded">
+  
+@if(registerForm.get('name')?.errors?.['required'])
+{
+  <p class="p-1 text-white">name is required</p>
+}
+   @else if(registerForm.get('name')?.errors?.['minlength'])
+   {
+    <p class="p-1 text-white">name min length is : 3</p>
+   } 
+    
+   @else if (registerForm.get('name')?.errors?.['maxlength']) {
+    <p class="p-1 text-white">name max length is : 8</p>
+   }
+  
+    </div>
+}
+</div>
+
+<div class="my-4">
+  <label>email:</label>
+  <input formControlName="email" type="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+ 
+  @if(registerForm.get('email')?.errors && registerForm.get('email')?.touched){
+    <div class="bg-red-400 p-0 m-2 rounded">
+    
+      @if(registerForm.get('email')?.errors?.['required'])
+      {
+        <p class="p-1 text-white">email is required</p>
+      }
+       
+         @else if(registerForm.get('email')?.errors?.['email'])
+         {
+
+          <p class="p-1 text-white">email ex:Mahmoud&#64;gmail.com</p>
+
+         }
+
+        </div>
+        } 
+   
+  
+</div>
+
+<div class="my-4">
+  <label>phone:</label>
+  <input formControlName="phone" type="tel" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+  @if(registerForm.get('phone')?.errors && registerForm.get('phone')?.touched){
+    <div class="bg-red-400 p-0 m-2 rounded">
+    
+      @if(registerForm.get('phone')?.errors?.['required'])
+      {
+        <p class="p-1 text-white">phone is required</p>
+      }
+       
+         @else if(registerForm.get('phone')?.errors?.['pattern'])
+         {
+          <p class="p-1 text-white">enter number egypt phone (12 number)</p>
+         }
+
+        </div>
+        } 
+   
+
+
+</div>
+<div my-4>
+  <label>password:</label>
+  <input type="password" formControlName="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+  @if(registerForm.get('password')?.errors && registerForm.get('password')?.touched){
+    <div class="bg-red-400 p-0 m-2 rounded">
+    
+      @if(registerForm.get('password')?.errors?.['required'])
+      {
+        <p class="p-1 text-white">password is required</p>
+      }
+       
+         @else if(registerForm.get('password')?.errors?.['pattern'])
+         {
+          <p class="p-1 text-white">start capital letter follow minimum 7 character </p>
+         }
+
+        </div>
+        } 
+</div>
+<div class="my-4">
+  <label>repassword:</label>
+  <input type="password" formControlName="rePassword" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+  @if(registerForm.get('rePassword')?.errors && registerForm.get('rePassword')?.touched){
+    <div class="bg-red-400 p-0 m-2 rounded">
+    
+      @if(registerForm.get('rePassword')?.errors?.['required'])
+      {
+        <p class="p-1 text-white">repassword is required</p>
+      }
+       
+         @else if(registerForm.get('rePassword')?.errors?.['mismatch'])
+         {
+          <p class="p-1 text-white">repassword not match password </p>
+         }
+ 
+        </div>
+        } 
+</div>
+<button [disabled]="registerForm.invalid" class="btn-main p-2 block ms-auto">
+ @if(isLoading)
+ {
+  <span ><i class="fa fa-spin fa-spinner"></i></span>
+ }
+ @else {
+  <span>Register</span>
+ }
+ 
+ 
+
+</button>
+
+</form>
+
+</div>

@@ -1,0 +1,48 @@
+@if(isLoading)
+{
+  <div class="h-screen  row justify-center items-center">
+    <!-- <span class="fa fa-spin text-xl text-main"></span> -->
+    <div class="loader"></div>
+    </div>
+}
+@else {
+
+  <div class="w-3/4 mx-auto my-8">
+    <div class="row">
+      @for( i of x ;track $index) {
+      <div class="md:w-2/12 p-2 cursor-pointer" >
+        <div class="p-2 product">
+       
+         @if(!wishlist.includes(i._id))
+         {
+          <i class="fa-regular fa-heart heart" (click)="addProductToWishlist(i._id)"></i>
+         }
+         @if(wishlist.includes(i._id))
+         {
+          <i class="fas fa-heart heart fa-2x" (click)="removeProductFromWish(i._id)"></i>
+         }
+     
+          <div  >
+          <img [src]="i.imageCover" alt="image" class="w-full" />
+          <span class="text-main font-sm">{{ i.category.name | uppercase }}</span>
+          <h3 class="my-3 font-bold text-balance font-medium text-xl">
+            {{ i.title.split(" ").splice(0, 1).join(" ") |uppercase }}
+          </h3>
+          <div class="row justify-between">
+            <span>{{ i.price }}</span>
+            <span
+              >{{ i.ratingsAverage }}<i class="fa fa-star rating-color"></i
+            ></span>
+          </div>
+        </div>
+        
+         
+          <button (click)="addProductToCart(i._id)" class="btn-main w-full">Add TO Cart</button>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+
+
+}

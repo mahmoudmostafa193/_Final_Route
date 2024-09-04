@@ -1,0 +1,29 @@
+@if(isLoading)
+{
+  <div class="h-screen  row justify-center items-center">
+    <!-- <span class="fa fa-spin text-xl text-main"></span> -->
+    <div class="loader"></div>
+    </div>
+}
+@else { 
+<div class="mx-auto row items-center my-5 w-9/12" >
+  <div class="md:w-3/12 p-3">
+    <img [src]="product.imageCover" class="w-full" alt="">
+  </div>
+  <div class="md:w-9/12 ">
+    <h1 class="text-lg font-medium">{{product.title}}</h1>
+    <p class="text-sm text-gray-400"> {{product.description}}</p>
+  <span class="text-xs">{{product.category.name}}</span>
+  <div class="row justify-between my-3">
+    <span>{{product.price}}EGP</span>
+    <span
+    >{{product.ratingsAverage}}<i class="fa fa-star rating-color"></i
+    ></span>
+  </div>
+  <button (click)="addProductToCart(product._id)" class="btn-main w-full">Add TO Cart</button>
+  </div>
+</div>
+
+}
+
+

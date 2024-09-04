@@ -1,0 +1,66 @@
+<div class="w-3/4 mx-auto">
+  <h1 class="h-3 text-2xl mb-10 mt-8">Login Now :</h1>
+  <form class="mb-9" [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+    @if(errMsg) {
+    <div class="bg-red-300 m-0 p-0 rounded">
+      <p class="m-0 p-1 text-white">{{ errMsg }}</p>
+    </div>
+    }
+
+    <div class="my-4">
+      <label>email:</label>
+      <input
+        formControlName="email"
+        type="email"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      />
+
+      @if(loginForm.get('email')?.errors && loginForm.get('email')?.touched){
+      <div class="bg-red-400 p-0 m-2 rounded">
+        @if(loginForm.get('email')?.errors?.['required']) {
+        <p class="p-1 text-white">email is required</p>
+        } @else if(loginForm.get('email')?.errors?.['email']) {
+
+        <p class="p-1 text-white">email ex:Mahmoud&#64;gmail.com</p>
+
+        }
+      </div>
+      }
+    </div>
+
+    <div my-4>
+      <label>password:</label>
+      <input
+        type="password"
+        formControlName="password"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      />
+      @if(loginForm.get('password')?.errors &&
+      loginForm.get('password')?.touched){
+      <div class="bg-red-400 p-0 m-2 rounded">
+        @if(loginForm.get('password')?.errors?.['required']) {
+        <p class="p-1 text-white">password is required</p>
+        } @else if(loginForm.get('password')?.errors?.['pattern']) {
+        <p class="p-1 text-white">
+          start capital letter follow minimum 7 character
+        </p>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="flex justify-end items-center">
+      <a class="text-blue-500 underline" routerLink="/forgetPassword">Forget Password</a>
+      <button
+        [disabled]="loginForm.invalid"
+        class="btn-main p-2 my-8 "
+      >
+        @if(isLoading) {
+        <span><i class="fa fa-spin fa-spinner"></i></span>
+        } @else {
+        <span>Login</span>
+        }
+      </button>
+    </div>
+  </form>
+</div>

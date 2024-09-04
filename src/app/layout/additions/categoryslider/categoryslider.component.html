@@ -1,0 +1,18 @@
+@if(isLoading)
+{
+  <div class="h-screen  row justify-center items-center">
+    <!-- <span class="fa fa-spin text-xl text-main"></span> -->
+    <div class="loader"></div>
+    </div>
+}
+
+@else {
+  <owl-carousel-o [options]="customOptions">
+    @for (category of categoryList; track $index) {
+      <ng-template carouselSlide [id]="category._id">
+        <img [src]="category.image" [alt]="category.name" [title]="category.name" class="w-full">
+      </ng-template>
+    }  
+  </owl-carousel-o>
+}
+

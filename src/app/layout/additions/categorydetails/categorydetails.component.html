@@ -1,0 +1,18 @@
+@if(isLoading)
+{
+  <div class="h-screen  row justify-center items-center">
+    <!-- <span class="fa fa-spin text-xl text-main"></span> -->
+    <div class="loader"></div>
+    </div>
+}
+@else {
+
+  <div class="card my-5 mx-auto w-9/12 product">
+    <img  [src]="cartDetails.image" class="w-full">
+    <div>
+      <h4 class="text-main text-8xl text-center">{{cartDetails.name}}</h4>
+    </div>
+    
+    </div>
+    
+}
